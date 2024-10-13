@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Defensores de la Cuenca Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+</head>
+<body>
+
+<h1>Defensores de la Cuenca Dashboard</h1>
+
+<!-- Status Filter Dropdown -->
+<div class="status-filter">
+    <label for="statusFilter">Filter by Status:</label>
+    <select id="statusFilter">
+        <option value="">All</option>
+        <option value="Requested">Requested</option>
+        <option value="Ordered">Ordered</option>
+        <option value="Planted">Planted</option>
+    </select>
+</div>
+
+<!-- Main Table for the summary (CSV Data) -->
+<div class="table-container">
+    <table id="summaryTable" class="display">
+        <thead>
+            <tr>
+                <th>Timestamp</th>
+                <th>Email</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Cell Phone</th>
+                <th>Zip Code</th>
+                <th>Address</th>
+                <th>Place Description</th>
+                <th>Trees</th>
+                <th>Ambassador</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Data will be populated here -->
+        </tbody>
+    </table>
+</div>
+
+<!-- Button to Move Planted Rows -->
+<button id="movePlantedButton">Move Planted Rows</button>
+
+<!-- Planted Trees Table -->
+<h2>Planted Trees</h2>
+<div class="table-container">
+    <table id="plantedTable" class="display">
+        <thead>
+            <tr>
+                <th>Timestamp</th>
+                <th>Email</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Cell Phone</th>
+                <th>Zip Code</th>
+                <th>Address</th>
+                <th>Place Description</th>
+                <th>Trees</th>
+                <th>Ambassador</th>
+                <th>Status</th> <!-- Planted/Watered Dropdown -->
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Planted rows will be added here -->
+        </tbody>
+    </table>
+
+
+<!-- Include necessary JS libraries and your custom script -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script> <!-- PapaParse for parsing CSV -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- jQuery -->
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script> <!-- DataTables -->
+<script src="script.js"></script> <!-- Link to your custom JavaScript -->
+</body>
+</html>

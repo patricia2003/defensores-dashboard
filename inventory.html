@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Page</title>
+    <link rel="stylesheet" href="style.css"> <!-- Link to your external CSS if any -->
+</head>
+<body>
+
+<h1>Inventory Page</h1>
+
+<!-- Navigation Link to Go Back to Main Page -->
+<nav>
+    <a href="index.html">Back to Main Dashboard</a> <!-- Link to go back to index.html -->
+</nav>
+
+<!-- Table to Input Number of Trees Ordered -->
+<table id="inventoryTable" border="1" cellpadding="10">
+    <thead>
+        <tr>
+            <th>Type of Tree</th>
+            <th>Number Ordered</th>
+            <th>Number Left</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Oak</td>
+            <td><input type="number" min="0" name="trees_ordered" placeholder="Enter number"></td>
+            <td id="oakLeft">50</td>
+        </tr>
+        <tr>
+            <td>Maple</td>
+            <td><input type="number" min="0" name="trees_ordered" placeholder="Enter number"></td>
+            <td id="mapleLeft">30</td>
+        </tr>
+        <tr>
+            <td>Pine</td>
+            <td><input type="number" min="0" name="trees_ordered" placeholder="Enter number"></td>
+            <td id="pineLeft">20</td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- Button to Submit Form -->
+<button id="submitButton">Submit Order</button>
+
+<!-- Include your JavaScript -->
+<script>
+    // JavaScript to handle form submission and dynamically update "Number Left"
+    document.getElementById('submitButton').addEventListener('click', function() {
+        const table = document.getElementById('inventoryTable');
+        const rows = table.getElementsByTagName('tr');
+
+        let orders = [];
+        
+        for (let i = 1; i < rows.length; i++) {
+            let cells = rows[i].getElementsByTagName('td');
+            let typeOfTree = cells[0].innerText;
+            let ordered = parseInt(cells[1].getElementsByTagName('input')[0].value || 0);
+            let left = parseInt(cells[2].innerText);
+            
+            // Update the "Number Left" based on the number ordered
+            if (ordered <= left) {
+                cells[2].innerText = left - ordered;
+            } else {
+                alert(`Not enough trees available for ${typeOfTree}. Only ${left} left.`);
+            }
+
+            orders.push({
+                typeOfTree: typeOfTree,
+                numberOrdered: ordered,
+                numberLeft: cells[2].innerText
+            });
+        }
+
+        console.log('Orders:', orders);
+
+        // You can now send the 'orders' data to your server or handle it further
+    });
+</script>
+
+</body>
+</html>
